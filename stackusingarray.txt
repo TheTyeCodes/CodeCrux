@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+struct stack{
+    int n;
+    int top;
+    int *A;
+};
+
+void push(struct stack *st,int data){
+    if(st->top==st->n-1){
+        printf("Stack overflow");
+    }else{
+        st->top++;
+        st->A[st->top] = data;
+    }
+    
+}
+int pop(struct stack *st){
+    
+    if(st->top == -1){
+        printf("stackisEmpty");
+    }else{
+        int value = st->A[st->top];
+        st->top = st->top-1;
+        return value;
+    }
+    
+}
+void display(struct stack st){
+    for(int i = st.top;i>=0;i--){
+        printf("%d ",st.A[i]);
+    }
+}
+int main() {
+	// your code goes here
+	struct stack st;
+	st.n = 5;
+	st.top = -1;
+    st.A = (int *)malloc(st.n*sizeof(int));
+	push(&st,3);
+	push(&st,4);
+	push(&st,5);
+	push(&st,6);
+	push(&st,7);
+	//printf("%d\n ",pop(&st)); //for poping the elements in stack
+	
+	display(st);
+
+}
+
