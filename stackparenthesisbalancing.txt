@@ -1,0 +1,74 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct stack{
+    char data;
+    struct stack *next;
+}*top;
+
+void push(char x){
+    struct stack *t;
+    t = (struct stack *)malloc(sizeof(struct stack));
+
+    if(t==NULL){
+        printf("Stack is full");
+    }else{
+        t->data = x;
+        t->next = top;
+        top = t;
+    }
+}
+
+char pop(){
+    struct stack *p;
+    int x = -1;
+    if(top==NULL){
+        printf("Stack is Empty");
+    }else{
+        p = top;
+        x = p->data;
+        top = top->next;
+
+        free(p);
+    }
+    return x;
+}
+
+int Balancedparenthesis(char *exp){
+
+    for(int i =0; exp[i] != '\0';i++ ){
+        if(exp[i] == '('){
+            push(exp[i]);
+        }
+        else if(exp[i] == ')'){
+            if(top==NULL){
+                return 0;
+            }
+            pop();
+        }
+    }
+    if(top == NULL){
+        return 1; // if exp is balanced
+    }else{
+        return 0; // if exp is not balanced
+    }
+
+}
+
+void display(){
+    struct stack *p;
+    p = top;
+    while( p != NULL){
+        printf("%d ",p->data);
+        p = p->next;
+    }
+}
+
+int main()
+{
+    char *exp="((a+b)*(c-d))";
+    printf("%d ",Balancedparenthesis(exp));
+
+
+    return 0;
+}
