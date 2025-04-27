@@ -6,10 +6,6 @@ This project is a personal collection of small programs, code snippets, and impo
 
 C / C++
 
-Python
-
-Java
-
 And more to come...
 
 📁 Structure
