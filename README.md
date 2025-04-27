@@ -16,4 +16,4 @@ Each folder in this repository corresponds to a specific programming language or
 
 🧠 Key concepts like loops, data structures, algorithms
 
-💡 Short projects, problem-solving snippets, and challenges
+💡 Short projects, problem-solving snippets, and challenges.
