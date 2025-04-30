@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Queue{
+    
+    int data;
+    struct Queue *next;
+    
+}*front = NULL,*rear = NULL;
+
+void enqueue(int x){
+    struct Queue *q;
+    q = (struct Queue *)malloc(sizeof(struct Queue));
+    if(q==NULL){
+        printf("Queue is Full");
+    }else{
+        q->data = x;
+        q->next = NULL;
+        if(front == NULL){
+            front = rear = q;
+        }else{
+            rear->next = q;
+            rear = q;
+        }
+    }
+}
+
+int dequeue(){
+    int x = -1;
+    struct Queue *t;
+    if(front == NULL){
+        printf("Queue is Empty");
+    }else{
+       t = front;
+       front = front ->next;
+       x = t->data;
+       free(t);
+    }
+    return x;
+}
+
+void display(){
+    struct Queue *y = front;
+    while(y != NULL){
+        printf("%d ",y->data);
+        y=y->next;
+    }
+}
+
+int main() {
+
+	enqueue(4);
+	enqueue(5);
+	enqueue(6);
+	enqueue(7);
+	enqueue(8);
+	//printf("%d\n",dequeue());
+	display();
+	
+	
+
+}
+
