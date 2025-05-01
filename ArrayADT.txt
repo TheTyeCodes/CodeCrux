@@ -1,0 +1,72 @@
+#include <stdio.h>
+
+int Binarysearch(int A[],int key,int size){
+
+    int l = 0;
+    int h = size-1;
+    int mid;
+    while(l<=h){
+        mid = (l+h)/2;
+        if(key == A[mid]){
+            printf("key found at index : %d\n",mid);
+            return 0;
+        }else if(key>A[mid]){
+            l = mid +1;
+
+        }else{
+            h = mid-1;
+        }
+    }
+    printf("Key is not found");
+    return 0;
+
+}
+
+int Maxelement(int A[],int size){
+    int x = A[0];
+    for(int i =0;i<size;i++){
+        if(A[i]>x){
+            x = A[i];
+        }
+    }
+    printf("Max element in array is: %d\n",x);
+    return x;
+}
+
+int reverse(int A[],int size){
+    for(int i = 0,j=size-1;i<j;i++,j--){
+        int temp = A[i];
+        A[i] = A[j];
+        A[j] = temp;
+        
+    }
+    for(int i =0;i<6;i++){
+        printf("%d ",A[i]);
+    }
+    printf("\n");
+}
+
+int insert(int A[],int *size,int index,int x){
+    int i = *size - 1;
+    while(A[i]>x){
+        A[i+1] = A[i];
+        i--;
+
+    }
+    A[i+1] = x;
+    (*size)++;
+    for(int i =0;i<*size;i++){
+        printf("%d ",A[i]);
+    }
+
+}
+int main()
+{
+    int A[] = {3,5,6,7,8,9};
+    int size = sizeof(A) / sizeof(A[0]);
+    //Binarysearch(A,6,size);
+    //Maxelement(A,size);
+    //reverse(A,size);
+    insert(A,&size,1,4);
+    return 0;
+}
